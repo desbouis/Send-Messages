@@ -1,0 +1,9 @@
+Send-Messages
+
+The goal is to send messages to a nodejs http server that is going to relay these messages to client browsers with socket.io.
+
+Need node.js + npm + socket.io + http server (apache, nginx).
+The nodejs server is listening on the port number 8080.
+An other http server (apache, nginx) is listening on the standart port 80.
+Browsers loads a html page on port number 80 whith little javascript code to connect to nodejs on port number 8080 via socket.io.
+The nodejs http server gets a message from the querystring and send it to socket. All connected browsers shows the message.
