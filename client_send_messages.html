@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>Test le recuperation de messages</title>
+<script src="http://localhost:8080/socket.io/socket.io.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>
+var options = { 'connect timeout': 5000 };
+
+var socket = io.connect('http://localhost:8080', options);
+socket.on('log_message', function (data) {
+   console.log(data);
+   $('#log_message ul').prepend('<li>' + data + '</li>');
+   socket.emit('ack_log_message', 'message de log bien recu : ' + data)
+});
+</script>
+</head>
+<body>
+<div>Messages de logs :</div>
+<div id="log_message"><ul></ul></div>
+</body>
+</html>
